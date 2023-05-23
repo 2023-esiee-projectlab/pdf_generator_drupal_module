@@ -1,7 +1,0 @@
-name : PDF_Generator
-core : 8.x
-type : module
-version : 1.0
-package : ESIEE
-description : 'Module pour générer des PDF'
-dependencies: { }
