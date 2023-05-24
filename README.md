@@ -26,6 +26,5 @@ La source du projet est disponible sur [Packagist - ESIEE - PDF Generator](https
 
 Ce projet utilise la librairie **esiee/pdf_generator_composer_package** pour la génération des PDF.
 
-- Documentation : [TCPDF - Documentation](https://tcpdf.org/)
 - GitHub : [GitHub - esiee/pdf_generator_composer_package](https://github.com/2023-esiee-projectlab/pdf_generator_composer_package)
 - Packagist : [Packagist - esiee/pdf_generator_composer_package](https://packagist.org/packages/esiee/pdf_generator_composer_package)
