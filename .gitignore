@@ -1,3 +1,10 @@
 # IDE files
+# IDEs
 .idea/
 .vscode/
+
+# Composer
+vendor/
+
+# Builds
+composer.lock
