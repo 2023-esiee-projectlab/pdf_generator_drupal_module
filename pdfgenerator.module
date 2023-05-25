@@ -49,37 +49,3 @@ function pdfgenerator_theme()
 
   return $theme;
 }
-
-/**
- * Ce hook permet de déclarer un bloc personnalisé d'informations.
- *
- * Implements hook_block_info().
- */
-function pdfgenerator_block_info() {
-	$blocks = [];
-
-	$blocks['pdfgenerator_bouton'] = [
-		'info' => t('Bouton personnalisé'),
-	];
-
-	return $blocks;
-}
-
-/**
- * Ce hook permet de déclarer un bloc personnalisé de vue.
- *
- * Implements hook_block_view().
- */
-function pdfgenerator_block_view($delta = '') {
-	$block = [];
-
-	switch ($delta) {
-		case 'pdfgenerator_bouton':
-			$block['content'] = [
-				'#markup' => '<a href="#" class="mon-bouton">Cliquez ici</a>',
-			];
-			break;
-	}
-
-	return $block;
-}

@@ -30,4 +30,11 @@ class PdfGeneratorController {
 		}
 		return $strings;
 	}
+
+	/**
+	 * Méthode de génération du PDF à partir d'un noeud de type article
+	 * @param $node
+	 * @return void
+	 */
+	public function generatePdf(){}
 }

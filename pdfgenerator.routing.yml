@@ -38,3 +38,12 @@ pdfgenerator.about:
         _title: 'PdfGenerator - A propos'
     requirements:
         _permission: 'administer pdfgenerator settings'
+
+# Liaison avec :
+# - le controller de génération de PDF
+pdfgenerator.generate.pdf:
+    path: '/pdfgenerator/generate/pdf/'
+    defaults:
+        _controller: '\Drupal\pdfgenerator\Controllers\PdfGeneratorController::generatePdf'
+    requirements:
+        _permission: 'access content'
