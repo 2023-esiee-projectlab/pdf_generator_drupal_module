@@ -38,3 +38,12 @@ pdfgenerator.about:
         _title: 'PdfGenerator - A propos'
     requirements:
         _permission: 'administer pdfgenerator settings'
+
+# Lien vers l'exportation, depuis un article
+pdfgenerator.export:
+  path: '/{entity_type}/{entity_id}/export_pdf'
+  defaults:
+    _title: 'PDF Generator - Export PDF'
+    _controller: '\Drupal\pdfgenerator\Controller\PdfGeneratorController::generatePDF'
+  requirements:
+    _custom_access: '\Drupal\pdfgenerator\Controller\PdfGeneratorController::checkAccess'
