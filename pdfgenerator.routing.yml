@@ -48,3 +48,13 @@ pdfgenerator.generate.pdf:
     requirements:
         _permission: 'access content'
         _is_controller_call: 'TRUE'
+
+# Liaison avec :
+# - le controller de génération de PDF via url
+pdfgenerator.generate.pdf.file:
+    # chemin pour la génération de PDF avec la langue du site et l'id du noeud
+    path: '/{langcode}/node/{node_id}/generate/pdf'
+    defaults:
+        _controller: '\Drupal\pdfgenerator\Controllers\PdfGeneratorController::generatePdfByUrl'
+    requirements:
+        _permission: 'access content'

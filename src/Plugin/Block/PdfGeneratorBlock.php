@@ -27,10 +27,10 @@ use Drupal\Core\Url;
  */
 class PdfGeneratorBlock extends BlockBase {
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function build() {
+    /**
+     * {@inheritdoc}
+     */
+    public function build() {
 		// Get the current path.
 		$current_path = \Drupal::request()->getPathInfo();
 		// Get the node id from the current path.
@@ -56,5 +56,5 @@ class PdfGeneratorBlock extends BlockBase {
 		];
 
 		return $content;
-	}
+    }
 }
