@@ -51,6 +51,18 @@ function pdfgenerator_theme() {
 function pdfgenerator_page_top(array &$page) {
 	// Add 'Back to content editing' link on preview page.
 	$route_match = \Drupal::routeMatch();
-	var_dump($route_match, $page);
-	exit;
+	// var_dump($route_match->getRouteName(), $page);
+	if (($route_match->getRouteName() == 'entity.node.preview') || ($route_match->getRouteName() == 'entity.node.canonical')) {
+		$page['page_top']['node_preview'] = [
+			'#type' => 'container',
+			'#attributes' => [
+				'class' => [
+					'node-preview-container',
+					'container-inline',
+				],
+			],
+		];
+	}
+	// var_dump($page);
+	// exit;
 }
