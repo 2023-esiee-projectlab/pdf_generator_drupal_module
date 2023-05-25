@@ -34,7 +34,7 @@ class PdfGeneratorSettingsForm extends ConfigFormBase{
         // Sous-block de Police
         $form['general']['show_button_on_articles'] = [
             '#type' => 'checkbox',
-            '#title' => $this->t('Activer ou désactiver le bouton de la génération de PDF pour les articles publiés'),
+            '#title' => $this->t('Activer ou désactiver l\'affichage du bouton de téléchargement pour les contenus publiés'),
             '#default_value' => $config->get('show_button_on_articles'),
             '#description' => $this->t('Si cette case est cochée, le bouton de la génération de PDF sera affiché pour les articles publiés.'),
         ];
@@ -100,17 +100,23 @@ class PdfGeneratorSettingsForm extends ConfigFormBase{
 
         // Sous-block de Orientation
         $form['mise_en_page']['orientation'] = [ '#type' => 'details', '#title' => t('Orientation'), '#open' => TRUE, ];
-        $form['mise_en_page']['orientation']['orientation_portrait'] = [ '#type' => 'button', '#value' => $this->t('Portrait') ];
-        $form['mise_en_page']['orientation']['orientation_paysage'] = [ '#type' => 'button', '#value' => $this->t('Paysage') ];
+		$form['mise_en_page']['orientation']['orientations'] = [ '#type' => 'radios', '#title' => $this->t('Orientation'),
+			'#options' => [
+				'portrait' => $this->t('Portrait'),
+				'paysage' => $this->t('Paysage')
+			], '#default_value' => $config->get('orientations')
+		];
 
         // Sous-block de Taille de la page
         $form['mise_en_page']['taille_page'] = [ '#type' => 'details', '#title' => t('Taille de la page'), '#open' => TRUE, ];
-        $form['mise_en_page']['taille_page']['taille_page_format'] = [ '#type' => 'select', '#title' => $this->t('Format de la page'),
+        $form['mise_en_page']['taille_page']['taille_page_format'] = [
+			'#type' => 'select',
+			'#title' => $this->t('Format de la page'),
             '#options' => [
                 'A3' => $this->t('A3 - 29,7 x 42 cm'),
                 'A4' => $this->t('A4 - 20,98 x 29,7 cm'),
                 'A5' => $this->t('A5 - 14,8 x 21 cm')
-            ], '#default_value' => $config->get('marges_reliure')
+            ], '#default_value' => $config->get('taille_page_format')
         ];
 
         // Sous-block de Ensemble de pages
