@@ -1,7 +1,17 @@
 <?php
-
+/**
+ * @file PdfGeneratorSettingsBlock.php
+ *
+ * Ce fichier contient la classe PdfGeneratorSettingsBlock.
+ * Il permet de gérer le bloc de configuration du module PDF Generator dans l'interface de configuration
+ *
+ * Namespace : Drupal\pdfgenerator\Form
+ *
+ * Contains : Drupal\Core\Annotation\Block
+ */
 namespace Drupal\pdfgenerator\Block;
 
+// Permet d'implémenter la classe Block de Drupal pour gérer le bloc de configuration du module PDF Generator dans l'interface de configuration.
 use Drupal\Core\Annotation\Block;
 use Drupal\Core\Block\BlockBase;
 

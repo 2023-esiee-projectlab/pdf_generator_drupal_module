@@ -1,8 +1,18 @@
 <?php
-
+/**
+ * @file PdfGeneratorSettingsForm.php
+ *
+ * Ce fichier contient la classe PdfGeneratorSettingsForm.
+ * Il permet de gérer la configuration du module PDF Generator.
+ *
+ * Namespace : Drupal\pdfgenerator\Form
+ *
+ * Contains \Drupal\pdfgenerator\Form\ConfigFormBase.
+ * Contains \Drupal\pdfgenerator\Form\PdfGeneratorSettingsForm.
+ */
 namespace Drupal\pdfgenerator\Form;
 
-// Permet d'implémenter l'interface de configuration de Drupal.
+// Permet d'implémenter la classe ConfigFormBase et FormStateInterface de Drupal pour gérer les formulaires l'interface de configuration de Drupal.
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
