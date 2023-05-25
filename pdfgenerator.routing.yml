@@ -17,7 +17,7 @@ pdfgenerator.settings:
     defaults:
         _title: 'PdfGenerator - Configurations'
         _form: '\Drupal\pdfgenerator\Form\PdfGeneratorSettingsForm'
-        #    _controller: '\Drupal\pdfgenerator\Controller\PdfGeneratorManager::show'
+        #    _controller: '\Drupal\pdfgenerator\Controller\PdfGeneratorController::show'
     requirements:
         _permission: 'administer pdfgenerator settings'
 

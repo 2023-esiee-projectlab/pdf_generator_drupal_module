@@ -15,6 +15,8 @@ namespace Drupal\pdfgenerator\Form;
 // Permet d'implémenter la classe ConfigFormBase et FormStateInterface de Drupal pour gérer les formulaires l'interface de configuration de Drupal.
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\pdfgenerator\PdfGeneratorController;
+use Drupal\pdfgenerator\Utils\UtilsFolderAndFiles;
 
 class PdfGeneratorSettingsForm extends ConfigFormBase{
 
@@ -56,11 +58,13 @@ class PdfGeneratorSettingsForm extends ConfigFormBase{
         $form['mise_en_page']['police'] = [ '#type' => 'details', '#title' => t('Police'), '#open' => TRUE, ];
 
         // Options de Police
+		$strings = UtilsFolderAndFiles::lireFichiersDansDossier('./polices/');
         $form['mise_en_page']['police']['police_select'] = [ '#type' => 'select', '#title' => $this->t('Police'),
             '#options' => [
-                'option1' => $this->t('Option 1'),
-                'option2' => $this->t('Option 2'),
-                'option3' => $this->t('Option 3'),
+                //'option1' => $this->t('Option 1'),
+                //'option2' => $this->t('Option 2'),
+                //'option3' => $this->t('Option 3'),
+				array_combine($strings, $strings)
             ], '#default_value' => $config->get('police_select')
         ];
         $form['mise_en_page']['police']['police_size'] = [ '#type' => 'select', '#title' => $this->t('Taille de la police'),
