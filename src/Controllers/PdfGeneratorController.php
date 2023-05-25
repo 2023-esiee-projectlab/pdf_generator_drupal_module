@@ -11,9 +11,10 @@
  */
 namespace Drupal\pdfgenerator\Controllers;
 
+use Drupal\Core\Controller\ControllerBase;
 use Drupal\pdfgenerator\Utils\UtilsFolderAndFiles;
 
-class PdfGeneratorController {
+class PdfGeneratorController extends ControllerBase{
 
 	/**
 	 * Méthode de lecture du noms des fichiers de polices
@@ -36,5 +37,10 @@ class PdfGeneratorController {
 	 * @param $node
 	 * @return void
 	 */
-	public function generatePdf(){}
+	public function generatePdf($node_id){
+		// Vérifiez que la méthode est appelée et que le paramètre est reçu.
+		\Drupal::logger('PDF Generator')->notice('yourMethod called with node_id: ' . $node_id);
+
+		print 'generatePdf';
+	}
 }

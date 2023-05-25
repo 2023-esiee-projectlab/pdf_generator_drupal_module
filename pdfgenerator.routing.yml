@@ -42,8 +42,9 @@ pdfgenerator.about:
 # Liaison avec :
 # - le controller de génération de PDF
 pdfgenerator.generate.pdf:
-    path: '/pdfgenerator/generate/pdf/'
+    path: '/pdfgenerator/generate/pdf/{node_id}'
     defaults:
         _controller: '\Drupal\pdfgenerator\Controllers\PdfGeneratorController::generatePdf'
     requirements:
         _permission: 'access content'
+        _is_controller_call: 'TRUE'
