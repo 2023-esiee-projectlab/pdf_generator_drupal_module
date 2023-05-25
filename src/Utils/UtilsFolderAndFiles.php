@@ -23,11 +23,14 @@ class UtilsFolderAndFiles {
 
 		// Vérifie si le dossier existe
 		if (!is_dir($dossier)) {
+			/*
 			// Affichage d'un message d'erreur dans le log
 			\Drupal::logger('pdfgenerator')->error('[PDF Generator] Le dossier "'.$dossier.'" n\'existe pas.');
 			// Affichage d'un message d'erreur dans le log CURL
 			\Drupal::logger('pdfgenerator')->error('[PDF Generator] Le dossier "'.$dossier.'" n\'existe pas.', array(), array('channel' => 'curl'));
-			//print "Le dossier n'existe pas.";
+			//-
+			print "[PDF Generator] Le dossier ".$dossier." n\'existe pas.";
+			*/
 
 			// Retourne null
 			return null;
@@ -39,15 +42,17 @@ class UtilsFolderAndFiles {
 			foreach ($fichiers as $fichier) {
 				// Exclut les dossiers '.' et '..'
 				if ($fichier != '.' && $fichier != '..') {
-					// Vérifie si le chemin correspond à un fichier
-					if (is_file($dossier . '/' . $fichier)) {
-						// Affichage d'un message dans le log
-						\Drupal::logger('pdfgenerator')->notice('[PDF Generator] Le fichier "'.$fichier.'" a été trouvé dans le dossier "'.$dossier.'".');
-						// Affichage d'un message dans le log CURL
-						\Drupal::logger('pdfgenerator')->notice('[PDF Generator] Le fichier "'.$fichier.'" a été trouvé dans le dossier "'.$dossier.'".', array(), array('channel' => 'curl'));
-						// Ajoute le fichier au tableau des résultats
-						$results.push($fichier);
-					}
+
+					/**
+					 * Nettoyage des noms de fichiers :
+					 * - Remplacement des underscores par des espaces
+					 * - mise en majuscule de la première lettre de chaque mot
+					 */
+					$fichier = str_replace('_', ' ', $fichier);
+					$fichier = ucwords($fichier);
+
+					// Ajoute le fichier au tableau des résultats
+					$results[] = $fichier;
 				}
 			}
 

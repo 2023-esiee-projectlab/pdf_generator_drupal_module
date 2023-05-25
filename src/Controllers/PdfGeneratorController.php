@@ -9,7 +9,7 @@
  *
  * Contains : Drupal\pdfgenerator\Utils\UtilsFolderAndFiles
  */
-namespace Drupal\pdfgenerator;
+namespace Drupal\pdfgenerator\Controllers;
 
 use Drupal\pdfgenerator\Utils\UtilsFolderAndFiles;
 
@@ -23,6 +23,11 @@ class PdfGeneratorController {
 	 * @return array
 	 */
 	public function lireFichiersPolicesDansDossier($dossier) {
-		return UtilsFolderAndFiles::lireFichiersDansDossier($dossier);
+		$strings = array();
+		$strings[] = 'Default system';
+		foreach (UtilsFolderAndFiles::lireFichiersDansDossier($dossier) as $fichier) {
+			$strings[] = $fichier;
+		}
+		return $strings;
 	}
 }
