@@ -5,18 +5,18 @@
  * Ce fichier contient la classe PdfGeneratorSettingsForm.
  * Il permet de gérer la configuration du module PDF Generator.
  *
- * Namespace : Drupal\pdfgenerator\Form
+ * Namespace : Drupal\pdf_generator_drupal_module\Form
  *
- * Contains \Drupal\pdfgenerator\Form\ConfigFormBase.
- * Contains \Drupal\pdfgenerator\Form\PdfGeneratorSettingsForm.
+ * Contains \Drupal\pdf_generator_drupal_module\Form\ConfigFormBase.
+ * Contains \Drupal\pdf_generator_drupal_module\Form\PdfGeneratorSettingsForm.
  */
-namespace Drupal\pdfgenerator\Form;
+namespace Drupal\pdf_generator_drupal_module\Form;
 
 // Permet d'implémenter la classe ConfigFormBase et FormStateInterface de Drupal pour gérer les formulaires l'interface de configuration de Drupal.
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 // Permet d'implémenter la classe PdfGeneratorController du module PDF Generator.
-use Drupal\pdfgenerator\Controllers\PdfGeneratorController;
+use Drupal\pdf_generator_drupal_module\Controllers\PdfGeneratorController;
 
 class PdfGeneratorSettingsForm extends ConfigFormBase{
 
@@ -31,14 +31,14 @@ class PdfGeneratorSettingsForm extends ConfigFormBase{
      * {@inheritdoc}
      */
     protected function getEditableConfigNames() {
-        return ['pdfgenerator.settings'];
+        return ['pdf_generator_drupal_module.settings'];
     }
 
     /**
      * {@inheritdoc}
      */
     public function buildForm(array $form, FormStateInterface $form_state) {
-        $config = $this->config('pdfgenerator.settings');
+        $config = $this->config('pdf_generator_drupal_module.settings');
 
         // Block général
         $form['general'] = [ '#type' => 'details', '#title' => t('Général'), '#open' => TRUE, ];
@@ -200,7 +200,7 @@ class PdfGeneratorSettingsForm extends ConfigFormBase{
      * {@inheritdoc}
      */
     public function submitForm(array &$form, FormStateInterface $form_state) {
-        $config = $this->config('pdfgenerator.settings');
+        $config = $this->config('pdf_generator_drupal_module.settings');
         /*
         $config->set('setting', $form_state->getValue('setting'));
         $config->set('show_button_on_articles', $form_state->getValue('show_button_on_articles'));

@@ -5,14 +5,14 @@
  * Ce fichier contient la classe PdfGeneratorController.
  * En cours ...
  *
- * Namespace : Drupal\pdfgenerator
+ * Namespace : Drupal\pdf_generator_drupal_module
  *
- * Contains : Drupal\pdfgenerator\Utils\UtilsFolderAndFiles
+ * Contains : Drupal\pdf_generator_drupal_module\Utils\UtilsFolderAndFiles
  */
-namespace Drupal\pdfgenerator\Controllers;
+namespace Drupal\pdf_generator_drupal_module\Controllers;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\pdfgenerator\Utils\UtilsFolderAndFiles;
+use Drupal\pdf_generator_drupal_module\Utils\UtilsFolderAndFiles;
 use pdf_generator\PdfGenerator;
 
 class PdfGeneratorController extends ControllerBase{
