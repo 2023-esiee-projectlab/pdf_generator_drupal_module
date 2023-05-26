@@ -6,7 +6,11 @@
  */
 
 // Permet d'implémenter l'interface de routage de Drupal.
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url as CoreUrl;
 
 /**
  * Implements hook_help().
@@ -48,47 +52,47 @@ function pdfgenerator_theme() {
 	return $theme;
 }
 
-function pdfgenerator_page_top(array &$page) {
-	// Add 'Back to content editing' link on preview page.
-	$route_match = \Drupal::routeMatch();
-	// var_dump($route_match->getRouteName(), $page);
-	if (($route_match->getRouteName() == 'entity.node.preview') || ($route_match->getRouteName() == 'entity.node.canonical')) {
-		$page['page_top']['node_preview'] = [
-			'#type' => 'container',
-			'#attributes' => [
-				'class' => [
-					'node-preview-container',
-					'container-inline',
-				],
-			],
-		];
-		// $page['pdfgenerator'] = [
-		// 	'#markup' => 'This is the top.',
-		// ];
-		// var_dump($page);
-		// exit;
-	}
-}
 
 function pdfgenerator_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
 	$route_match = \Drupal::routeMatch();
 	if (($route_match->getRouteName() == 'entity.node.preview') || ($route_match->getRouteName() == 'entity.node.canonical')) {
-		$url = CoreUrl::fromRoute('pdfgenerator.export', ['entity_type' => $entity->getEntityType()->id(), 'entity_id' => $entity->id()]);
+		// var_dump($entity->getEntityType()->id());
+		// $url = CoreUrl::fromUri('http://drupal/node', ['node' => $entity]);
+		$url = CoreUrl::fromRoute($route_match->getRouteName(), ['node' => $entity->id()]);
+		// $url = CoreUrl::fromRoute('pdfgenerator.export', ['entity_type' => $entity->getEntityType()->id(), 'entity_id' => $entity->id()]);
 		$url_options = [
 			'attributes' => [
 				'class' => [
 					// Add or remove CSS classes here
 					'button',
-					'button--small'
+					'button--small',
+					'pdfgenerator',
 				],
 			],
 		];
 		$url->setOptions($url_options);
-
-		$build['more_info'] = [
+		$build['pdfgenerator'] = [
 			'#type' => 'link',
-			'#title' => t('Export PDF'),
+			'#title' => 'Export PDF',
 			'#url' => $url,
 		];
+		// var_dump($url);
+	}
+}
+
+
+function pdfgenerator_node_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+	$route_match = \Drupal::routeMatch();
+	if (($route_match->getRouteName() == 'entity.node.preview') || ($route_match->getRouteName() == 'entity.node.canonical')) {
+		// var_dump($build);
+		// exit;
+		if ($build['#view_mode'] == 'full' && isset($build['pdfgenerator'])) {
+
+			// Change its weight.
+			$build['pdfgenerator']['#weight'] = 40;
+
+			// Add a #post_render callback to act on the rendered HTML of the entity.
+			// $build['#post_render'][] = 'pdfgenerator_node_post_render';
+		}
 	}
 }
