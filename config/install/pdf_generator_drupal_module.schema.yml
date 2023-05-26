@@ -1,0 +1,37 @@
+# Gestionnaire du schéma de la table de PDF Generator
+# [NON UTILISE (normalement) - A VERIFIER].
+
+# Table des configurations du module PDF Generator.
+# Celui-ci à pour champs :
+# - name - varchar(64) - non null - description : 'Name'
+# - int - int(10) - non null - description : 'int'
+# - boolean - boolean - non null - description : 'boolean'
+# - string - varchar(255) - non null - description : 'string'
+# Avec pour clé primaire : name
+pdf_generator_drupal_module_settings:
+    # Description de la table
+    description: 'Gestionnaire du schéma de la table de PDF Generator.'
+    # Champs de la table
+    fields:
+        name:
+            type: varchar
+            length: 255
+            not null: true
+            description: 'Name'
+        int:
+            type: int
+            length: 10
+            not null: true
+            description: 'int'
+        boolean:
+            type: boolean
+            not null: true
+            description: 'boolean'
+        string:
+            type: varchar
+            length: 255
+            not null: true
+            description: 'string'
+    # Clé primaire
+#    primary key:
+#        - name

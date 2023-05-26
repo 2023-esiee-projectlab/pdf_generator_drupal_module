@@ -1,0 +1,52 @@
+# Fichier de préselection des paramètres du module pdf_generator
+# Il s'exécute lors de l'installation du module
+
+# Préselection l'activation l'affichage du bouton de téléchargement pour les contenus publiés
+show_button_on_articles: true
+
+# Préselection de la taille de la police
+police_size: 12
+
+# Préselection de la police
+police_select: 'Default system'
+
+# Préselection de la taille de la marge
+# - marge - haute
+marges_top: '2,0'
+# - marge - bas
+marges_bottom: '2,0'
+# - marge - gauche
+marges_left: '2,0'
+# - marge - droite
+marges_right: '2,0'
+# - marge - reliure
+marges_reliure: '1,0'
+
+# Préselection de la reliure
+reliure: 'gauche'
+
+# Préselection de l'orientation de la page
+orientations: 'portrait'
+
+# Préselection de la taille de la page
+taille_page_format: 'A4'
+
+# Préselection de l'activation de l'ensemble des pages
+# - page de garde
+ensemble_pages_page_de_garde: true
+# - page de séparation
+ensemble_pages_page_de_separation: true
+# - page de sommaire
+ensemble_pages_haut_de_page: true
+# - page de contenu
+ensemble_pages_bas_de_page: true
+
+# Préselection de l'activation des pages de couvertures
+# - première page de couverture
+pages_converture_first: true
+# - deuxième page de couverture
+pages_converture_second: true
+# - troisième page de couverture
+pages_converture_third: true
+# - quatrième page de couverture
+pages_converture_four: true

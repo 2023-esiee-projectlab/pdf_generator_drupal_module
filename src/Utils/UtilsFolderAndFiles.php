@@ -5,11 +5,11 @@
  * Ce fichier contient la classe UtilsFolderAndFiles.
  * En cours ...
  *
- * Namespace : Drupal\pdfgenerator\Utils
+ * Namespace : Drupal\pdf_generator_drupal_module\Utils
  *
  * Contains : ...
  */
-namespace Drupal\pdfgenerator\Utils;
+namespace Drupal\pdf_generator_drupal_module\Utils;
 
 class UtilsFolderAndFiles {
 
