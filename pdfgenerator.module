@@ -9,9 +9,10 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
+ * Ce hook permet de gérer la route de l'aide du module.
+ *
  * Implements hook_help().
  */
-
 function pdfgenerator_help($route_name, RouteMatchInterface $route_match)
     {
         switch ($route_name) {
@@ -42,7 +43,6 @@ function pdfgenerator_help($route_name, RouteMatchInterface $route_match)
 /**
  * Implements hook_theme().
  */
-
 function pdfgenerator_theme()
 {
   $theme = [];

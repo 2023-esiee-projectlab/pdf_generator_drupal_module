@@ -17,7 +17,7 @@ pdfgenerator.settings:
     defaults:
         _title: 'PdfGenerator - Configurations'
         _form: '\Drupal\pdfgenerator\Form\PdfGeneratorSettingsForm'
-        #    _controller: '\Drupal\pdfgenerator\Controller\PdfGeneratorManager::show'
+        #    _controller: '\Drupal\pdfgenerator\Controller\PdfGeneratorController::show'
     requirements:
         _permission: 'administer pdfgenerator settings'
 
@@ -38,3 +38,23 @@ pdfgenerator.about:
         _title: 'PdfGenerator - A propos'
     requirements:
         _permission: 'administer pdfgenerator settings'
+
+# Liaison avec :
+# - le controller de génération de PDF
+pdfgenerator.generate.pdf:
+    path: '/pdfgenerator/generate/pdf/{node_id}'
+    defaults:
+        _controller: '\Drupal\pdfgenerator\Controllers\PdfGeneratorController::generatePdf'
+    requirements:
+        _permission: 'access content'
+        _is_controller_call: 'TRUE'
+
+# Liaison avec :
+# - le controller de génération de PDF via url
+pdfgenerator.generate.pdf.file:
+    # chemin pour la génération de PDF avec la langue du site et l'id du noeud
+    path: '/{langcode}/node/{node_id}/generate/pdf'
+    defaults:
+        _controller: '\Drupal\pdfgenerator\Controllers\PdfGeneratorController::generatePdfByUrl'
+    requirements:
+        _permission: 'access content'

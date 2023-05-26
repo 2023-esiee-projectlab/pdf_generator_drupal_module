@@ -1,10 +1,22 @@
 <?php
-
+/**
+ * @file PdfGeneratorSettingsForm.php
+ *
+ * Ce fichier contient la classe PdfGeneratorSettingsForm.
+ * Il permet de gérer la configuration du module PDF Generator.
+ *
+ * Namespace : Drupal\pdfgenerator\Form
+ *
+ * Contains \Drupal\pdfgenerator\Form\ConfigFormBase.
+ * Contains \Drupal\pdfgenerator\Form\PdfGeneratorSettingsForm.
+ */
 namespace Drupal\pdfgenerator\Form;
 
-// Permet d'implémenter l'interface de configuration de Drupal.
+// Permet d'implémenter la classe ConfigFormBase et FormStateInterface de Drupal pour gérer les formulaires l'interface de configuration de Drupal.
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+// Permet d'implémenter la classe PdfGeneratorController du module PDF Generator.
+use Drupal\pdfgenerator\Controllers\PdfGeneratorController;
 
 class PdfGeneratorSettingsForm extends ConfigFormBase{
 
@@ -34,7 +46,7 @@ class PdfGeneratorSettingsForm extends ConfigFormBase{
         // Sous-block de Police
         $form['general']['show_button_on_articles'] = [
             '#type' => 'checkbox',
-            '#title' => $this->t('Activer ou désactiver le bouton de la génération de PDF pour les articles publiés'),
+            '#title' => $this->t('Activer ou désactiver l\'affichage du bouton de téléchargement pour les contenus publiés'),
             '#default_value' => $config->get('show_button_on_articles'),
             '#description' => $this->t('Si cette case est cochée, le bouton de la génération de PDF sera affiché pour les articles publiés.'),
         ];
@@ -46,13 +58,13 @@ class PdfGeneratorSettingsForm extends ConfigFormBase{
         $form['mise_en_page']['police'] = [ '#type' => 'details', '#title' => t('Police'), '#open' => TRUE, ];
 
         // Options de Police
-        $form['mise_en_page']['police']['police_select'] = [ '#type' => 'select', '#title' => $this->t('Police'),
-            '#options' => [
-                'option1' => $this->t('Option 1'),
-                'option2' => $this->t('Option 2'),
-                'option3' => $this->t('Option 3'),
-            ], '#default_value' => $config->get('police_select')
-        ];
+		$polices_path = "modules/contrib/pdf_generator_drupal_module/polices/";
+		$pdfGeneratorController = new PdfGeneratorController();
+		$strings = $pdfGeneratorController->lireFichiersPolicesDansDossier('./'.$polices_path);
+		$form['mise_en_page']['police']['police_select'] = [ '#type' => 'select', '#title' => $this->t('Police'),
+			'#options' => $strings,
+			'#default_value' => $config->get('police_select')
+		];
         $form['mise_en_page']['police']['police_size'] = [ '#type' => 'select', '#title' => $this->t('Taille de la police'),
             '#options' => [
                 '8' => $this->t('8'), '9' => $this->t('9'), '10' => $this->t('10'), '11' => $this->t('11'),
@@ -100,17 +112,23 @@ class PdfGeneratorSettingsForm extends ConfigFormBase{
 
         // Sous-block de Orientation
         $form['mise_en_page']['orientation'] = [ '#type' => 'details', '#title' => t('Orientation'), '#open' => TRUE, ];
-        $form['mise_en_page']['orientation']['orientation_portrait'] = [ '#type' => 'button', '#value' => $this->t('Portrait') ];
-        $form['mise_en_page']['orientation']['orientation_paysage'] = [ '#type' => 'button', '#value' => $this->t('Paysage') ];
+		$form['mise_en_page']['orientation']['orientations'] = [ '#type' => 'radios', '#title' => $this->t('Orientation'),
+			'#options' => [
+				'portrait' => $this->t('Portrait'),
+				'paysage' => $this->t('Paysage')
+			], '#default_value' => $config->get('orientations')
+		];
 
         // Sous-block de Taille de la page
         $form['mise_en_page']['taille_page'] = [ '#type' => 'details', '#title' => t('Taille de la page'), '#open' => TRUE, ];
-        $form['mise_en_page']['taille_page']['taille_page_format'] = [ '#type' => 'select', '#title' => $this->t('Format de la page'),
+        $form['mise_en_page']['taille_page']['taille_page_format'] = [
+			'#type' => 'select',
+			'#title' => $this->t('Format de la page'),
             '#options' => [
                 'A3' => $this->t('A3 - 29,7 x 42 cm'),
                 'A4' => $this->t('A4 - 20,98 x 29,7 cm'),
                 'A5' => $this->t('A5 - 14,8 x 21 cm')
-            ], '#default_value' => $config->get('marges_reliure')
+            ], '#default_value' => $config->get('taille_page_format')
         ];
 
         // Sous-block de Ensemble de pages
