@@ -1,0 +1,213 @@
+# English translation of Drupal Dev
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2023-05-26 09:24+0000\n"
+"PO-Revision-Date: 2023-05-26 11:31+0200\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.3.1\n"
+
+msgid "ESIEE-IT & ENS"
+msgstr "ESIEE-IT & ENS"
+
+msgid ""
+"Ceci est un module de génération de PDF créer par l'ESIEE-IT pour l'ENS."
+msgstr "This is a PDF generation module created by ESIEE-IT for ENS."
+
+msgid "System to create pdf files"
+msgstr "System to create pdf files"
+
+msgid "Configurations"
+msgstr "Configurations"
+
+msgid "A propos"
+msgstr "About"
+
+msgid "PDF Generator"
+msgstr "PDF Generator"
+
+msgid "A propos de PDF Generator."
+msgstr "About of PDF Generator."
+
+msgid "Configuration des options de PDF Generator."
+msgstr "Configuring PDF Generator options."
+
+msgid "Configuration des permissions de PDF Generator."
+msgstr "Configuring PDF Generator permissions."
+
+msgid "Actif"
+msgstr "Enable"
+
+msgid "Bloqué"
+msgstr "Blocked"
+
+msgid ""
+"Activer ou désactiver le bouton de la génération de PDF pour les articles "
+"publiés"
+msgstr "Enable or disable PDF generation button for published articles"
+
+msgid ""
+"Si cette case est cochée, le bouton de la génération de PDF sera affiché "
+"pour les articles publiés."
+msgstr ""
+"If this box is checked, the PDF generation button will be displayed for "
+"published articles."
+
+msgid "Général"
+msgstr "General"
+
+msgid "Taille de la police"
+msgstr "Font size"
+
+msgid "Marge - Haut"
+msgstr "Margin - Top"
+
+msgid "Marge - Bas"
+msgstr "Margin - Bottom"
+
+msgid "Marge - Gauche"
+msgstr "Margin - Left"
+
+msgid "Marge - Droite"
+msgstr "Margin - Right"
+
+msgid "Marge - Reliure"
+msgstr "Margin - Binding"
+
+msgid "Gauche"
+msgstr "Left"
+
+msgid "Droite"
+msgstr "Right"
+
+msgid "Marge - Position de la reliure"
+msgstr "Margin - Binding Position"
+
+msgid "Marges"
+msgstr "Margin"
+
+msgid "Portrait"
+msgstr "Portrait"
+
+msgid "Paysage"
+msgstr "Landscape"
+
+msgid "Orientation"
+msgstr "Orientation"
+
+msgid "Format de la page"
+msgstr "Page format"
+
+msgid "Taille de la page"
+msgstr "Page size"
+
+msgid "Page de garde"
+msgstr "Cover page"
+
+msgid ""
+"Si cette case est cochée, une page de garde sera ajoutée au début du "
+"document."
+msgstr ""
+"If this box is checked, a cover page will be added at the beginning of the "
+"document."
+
+msgid "Page de séparation"
+msgstr "Separator"
+
+msgid ""
+"Si cette case est cochée, une page vierge de séparation sera ajoutée après "
+"la page de garde."
+msgstr ""
+"If this box is checked, a blank separator page will be added after the "
+"cover page."
+
+msgid "Haut de page"
+msgstr "Top of page"
+
+msgid ""
+"Si cette case est cochée, le haut de page sera ajouté à chaque page du "
+"document."
+msgstr ""
+"If this box is checked, the header will be added to each page of the "
+"document."
+
+msgid "Bas de page"
+msgstr "Bottom of page"
+
+msgid ""
+"Si cette case est cochée, le bas de page sera ajouté à chaque page du "
+"document."
+msgstr ""
+"If this box is checked, the footer will be added to each page of the "
+"document."
+
+msgid "Première page de couverture"
+msgstr "Front cover"
+
+msgid ""
+"Si cette case est cochée, une page recto de couverture sera ajoutée au "
+"début du document."
+msgstr ""
+"If this box is checked, a front cover page will be added at the beginning "
+"of the document."
+
+msgid "Deuxième page de couverture"
+msgstr "Second cover page"
+
+msgid ""
+"Si cette case est cochée, une page verso de couverture sera ajoutée au "
+"début du document (inclus la première page de couverture)."
+msgstr ""
+"If this box is checked, a back cover page will be added at the beginning of "
+"the document (including the first cover page)."
+
+msgid "troisième page de couverture"
+msgstr "third cover page"
+
+msgid ""
+"Si cette case est cochée, une page recto de couverture sera ajoutée à la "
+"fin du document."
+msgstr ""
+"If this box is checked, a front cover page will be added at the end of the "
+"document."
+
+msgid "Quatrième page de couverture"
+msgstr "Back cover"
+
+msgid ""
+"Si cette case est cochée, une page verso de couverture sera ajoutée à la "
+"fin du document (inclus la troisième page de couverture)."
+msgstr ""
+"If this box is checked, a back cover page will be added at the end of the "
+"document (including the third cover page)."
+
+msgid "[Features-Bonus] Pages de converture"
+msgstr "[Features-Bonus] Conversion pages"
+
+msgid "[Features-Bonus] Ensemble de pages"
+msgstr "[Features-Bonus] Set of pages"
+
+msgid "Mise en page"
+msgstr "Layout"
+
+msgid "PdfGenerator - Configurations"
+msgstr "PdfGenerator - Configurations"
+
+msgid "Personnes"
+msgstr "People"
+
+msgid "Administrateur des paramètres de <b>PDF Generator.</b>"
+msgstr "<b>PDF Generator.</b> Settings Administrator"
+
+msgid "Les administrateurs peuvent configurer le module <b>PDF Generator.</b>"
+msgstr "Administrators can configure the <b>PDF Generator</b> module"
+
+msgid "Configuration des permissions de PDF."
+msgstr "Configuring PDF permissions."
