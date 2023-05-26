@@ -1,9 +1,8 @@
-
 # Liaison avec :
 # - le block de configuration du module PDF Generator, dans le menu de configuration de Drupal
 # - le controller de block de menu de configuration de Drupal
 # - les sous-menus du module PDF Generator dans le menu de configuration de Drupal
-pdfgenerator.admin_config_pdfgenerator:
+pdf_generator_drupal_module.admin_config_pdf_generator_drupal_module:
     path: '/admin/config/services'
     defaults:
         _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
@@ -13,58 +12,49 @@ pdfgenerator.admin_config_pdfgenerator:
 
 # Liaison avec :
 # - le sous-menu de configuration du module PDF Generator, dans le block de configuration du module PDF Generator, dans le menu de configuration de Drupal
-pdfgenerator.settings:
-    path: '/admin/config/pdfgenerator/settings'
+pdf_generator_drupal_module.settings:
+    path: '/admin/config/pdf_generator_drupal_module/settings'
     defaults:
         _title: 'PdfGenerator - Configurations'
-        _form: '\Drupal\pdfgenerator\Form\PdfGeneratorSettingsForm'
-        #    _controller: '\Drupal\pdfgenerator\Controller\PdfGeneratorManager::show'
+        _form: '\Drupal\pdf_generator_drupal_module\Form\PdfGeneratorSettingsForm'
+        #    _controller: '\Drupal\pdf_generator_drupal_module\Controller\PdfGeneratorController::show'
     requirements:
-        _permission: 'administer pdfgenerator settings'
+        _permission: 'administer pdf_generator_drupal_module settings'
 
 # Liaison avec :
 # - le sous-menu de permissions du module PDF Generator, dans le block de configuration du module PDF Generator, dans le menu de configuration de Drupal
-pdfgenerator.permissions:
+pdf_generator_drupal_module.permissions:
     path: '/admin/people/permissions#module-pdfgenerator'
     defaults:
         _title: 'PdfGenerator - Permissions'
     requirements:
-        _permission: 'administer pdfgenerator settings'
+        _permission: 'administer pdf_generator_drupal_module settings'
 
 # Liaison avec :
 # - le sous-menu "A propos" du module PDF Generator, dans le block de configuration du module PDF Generator, dans le menu de configuration de Drupal
-pdfgenerator.about:
+pdf_generator_drupal_module.about:
     path: '/admin/help/pdfgenerator'
     defaults:
         _title: 'PdfGenerator - A propos'
     requirements:
-        _permission: 'administer pdfgenerator settings'
+        _permission: 'administer pdf_generator_drupal_module settings'
 
 # Liaison avec :
 # - le controller de génération de PDF
-pdfgenerator.generate.pdf:
-    path: '/pdfgenerator/generate/pdf/{node_id}'
+pdf_generator_drupal_module.generate.pdf:
+    path: '/pdf_generator_drupal_module/generate/pdf/{node_id}'
     defaults:
-        _controller: '\Drupal\pdfgenerator\Controllers\PdfGeneratorController::generatePdf'
+        _controller: '\Drupal\pdf_generator_drupal_module\Controller\PdfGeneratorController::generatePdf'
     requirements:
         _permission: 'access content'
         _is_controller_call: 'TRUE'
 
 # Liaison avec :
 # - le controller de génération de PDF via url
-pdfgenerator.generate.pdf.file:
+pdf_generator_drupal_module.generate.pdf.file:
     # chemin pour la génération de PDF avec la langue du site et l'id du noeud
     path: '/{langcode}/node/{node_id}/generate/pdf'
     defaults:
-        _controller: '\Drupal\pdfgenerator\Controllers\PdfGeneratorController::generatePdfByUrl'
+        _controller: '\Drupal\pdf_generator_drupal_module\Controller\PdfGeneratorController::generatePdfByUrl'
     requirements:
         _permission: 'access content'
-
-# Lien vers l'exportation, depuis un article
-pdfgenerator.export:
-  path: '/{entity_type}/{entity_id}/export_pdf'
-  defaults:
-    _title: 'PDF Generator - Export PDF'
-    _controller: '\Drupal\pdfgenerator\Controller\PdfGeneratorController::generatePDF'
-  requirements:
-    _custom_access: '\Drupal\pdfgenerator\Controller\PdfGeneratorController::checkAccess'

@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * @file
+ * Contains pdf_generator_drupal_module.module
+ */
+
+// Permet d'implémenter l'interface de routage de Drupal.
+use Drupal\Core\Routing\RouteMatchInterface;
+// Permet de s'amuser avec les Entity
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+// Ajout d'url (lien cliquable)
+use Drupal\Core\Url as CoreUrl;
+
+/**
+ * Ce hook permet de gérer la route de l'aide du module.
+ *
+ * Implements pdf_generator_drupal_module_help().
+ */
+function pdf_generator_drupal_module_help($route_name, RouteMatchInterface $route_match)
+    {
+        switch ($route_name) {
+            case 'help.page.pdf_generator_drupal_module':
+            $output = '';
+            $output .= '<h3>' . t('À propos') . '</h3>';
+            $output .= '<p>' . t('Ce module permet de générer un fichier PDF.') . '</p>';
+
+            // Utilisation du module.
+            $output .= '<h3>' . t('Uses') . '</h3>';
+            $output .= '<div>';
+            $output .= '<dt>' . t('Creating Paragraphs types') . '</dt>';
+            $output .= '<dd>' . t('<em>Paragraphs types</em> can be created by ...') . '<dd>';
+            $output .= '</div>';
+
+            // Dépendances du module.
+            $output .= '<h4>' . t('Dépendances du module') . '</h4>';
+            $output .= '<p>' . t('Ce module à pour packages de dépendances :') . '</p>';
+            $output .= '<ul>';
+            $output .= '<li>' . t('<a href=":link">esiee/pdf_generator_composer_package</a>', [':link' => 'https://packagist.org/packages/esiee/pdf_generator_composer_package',]) . '</li>';
+            $output .= '</ul>';
+
+            return $output;
+        break;
+    }
+}
+
+/**
+ * Implements pdf_generator_drupal_module_theme().
+ */
+function pdf_generator_drupal_module_theme()
+{
+  $theme = [];
+
+  return $theme;
+}
+
+
+function pdf_generator_drupal_module_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+	$route_match = \Drupal::routeMatch();
+	if (($route_match->getRouteName() == 'entity.node.preview') || ($route_match->getRouteName() == 'entity.node.canonical')) {
+		// $url = CoreUrl::fromUri('http://drupal/node', ['node' => $entity]);
+		$url = CoreUrl::fromRoute($route_match->getRouteName(), ['node' => $entity->id()]);
+		// $url = CoreUrl::fromRoute('pdf_generator_drupal_module.export', ['entity_type' => $entity->getEntityType()->id(), 'entity_id' => $entity->id()]);
+		$url_options = [
+			'attributes' => [
+				'class' => [
+					// Add or remove CSS classes here
+					'button',
+					'button--small',
+					'pdf_generator_drupal_module',
+				],
+			],
+		];
+		$url->setOptions($url_options);
+		$build['pdfgenerator'] = [
+			'#type' => 'link',
+			'#title' => 'Export PDF',
+			'#url' => $url,
+		];
+		// var_dump($url);
+	}
+}
+
+
+function pdf_generator_drupal_module_node_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+	$route_match = \Drupal::routeMatch();
+	if (($route_match->getRouteName() == 'entity.node.preview') || ($route_match->getRouteName() == 'entity.node.canonical')) {
+		if ($build['#view_mode'] == 'full' && isset($build['pdfgenerator'])) {
+			// Change its weight.
+			$build['pdfgenerator']['#weight'] = 40;
+		}
+	}
+}

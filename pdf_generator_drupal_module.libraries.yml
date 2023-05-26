@@ -1,4 +1,4 @@
-drupal.pdfgenerator.admin:
+drupal.pdf_generator_drupal_module.admin:
     dependencies:
         - core/jquery
         - core/drupal
@@ -11,7 +11,7 @@ drupal.pdfgenerator.admin:
 #        theme:
 #            css/paragraphs.admin.css: {}
 
-drupal.pdfgenerator.widget:
+drupal.pdf_generator_drupal_module.widget:
     dependencies:
         - core/jquery
         - core/drupal

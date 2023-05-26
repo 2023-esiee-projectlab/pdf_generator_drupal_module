@@ -5,11 +5,11 @@
  * Ce fichier contient la classe PdfGeneratorBlock.
  * Il permet de gérer le bloc de configuration du module PDF Generator dans l'interface de configuration
  *
- * Namespace : Drupal\pdfgenerator\Form
+ * Namespace : Drupal\pdf_generator_drupal_module\Form
  *
  * Contains : Drupal\Core\Annotation\Block
  */
-namespace Drupal\pdfgenerator\Plugin\Block;
+namespace Drupal\pdf_generator_drupal_module\Plugin\Block;
 
 // Permet d'implémenter la classe Block de Drupal pour gérer le bloc de configuration du module PDF Generator dans l'interface de configuration.
 use Drupal\Core\Block\BlockBase;
@@ -38,7 +38,7 @@ class PdfGeneratorBlock extends BlockBase {
 		// Remove all characters except numbers.
 		$node_id = preg_replace('/[^0-9]/', '', $node_id);
 		// Get the url of the pdf generator.
-		$url = Url::fromRoute('pdfgenerator.generate.pdf', ['node_id' => $node_id]);
+		$url = Url::fromRoute('pdf_generator_drupal_module.generate.pdf', ['node_id' => $node_id]);
 		// Create a link to the pdf generator.
 		$link = Link::fromTextAndUrl($this->t('Download PDF format'), $url);
 		// Convert the link to a renderable array.
