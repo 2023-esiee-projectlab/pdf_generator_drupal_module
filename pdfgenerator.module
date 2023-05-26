@@ -8,13 +8,14 @@
 // Permet d'implémenter l'interface de routage de Drupal.
 use Drupal\Core\Routing\RouteMatchInterface;
 
+use Drupal\Core\Url;
 /**
  * Ce hook permet de gérer la route de l'aide du module.
  *
  * Implements hook_help().
  */
 function pdfgenerator_help($route_name, RouteMatchInterface $route_match)
-    {
+{
         switch ($route_name) {
             case 'help.page.pdfgenerator':
             $output = '';
@@ -37,7 +38,37 @@ function pdfgenerator_help($route_name, RouteMatchInterface $route_match)
 
             return $output;
         break;
-    }
+		}
+}
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter() for nodes.
+ */
+function pdfButtonModule_node_view_alter(array &$build, EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display): void
+{
+
+	// Vérifiez si le type de contenu est "article".
+	if ($entity->getType() === 'article' || $entity->getType() === 'article_image' ) {
+		$url = Url::fromRoute('pdfButtonModule.export_pdf', ['node' => $entity->id()]);
+		$url_options = [
+			'attributes' => [
+				'class' => [
+					// Add or remove CSS classes here
+					'button',
+					'button--small'
+				],
+			],
+		];
+		$url->setOptions($url_options);
+
+		// Ajoutez le lien d'export PDF au rendu du nœud.
+		$build['pdfButtonModule_export_pdf_link'] = [
+			'#type' => 'link',
+			'#title' => t('Export PDF test'),
+			'#url' => $url,
+		];
+	}
 }
 
 /**
