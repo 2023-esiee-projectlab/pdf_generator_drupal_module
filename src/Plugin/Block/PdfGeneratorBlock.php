@@ -46,7 +46,7 @@ class PdfGeneratorBlock extends BlockBase {
 
 		$content = [
 			// Create a message to display.
-			'#markup' => $this->t('Download the article in pdf format.'),
+			'#markup' => $this->t('Download the article in pdf format. '),
 			// Create a button to download the pdf.
 			'button' => [
 				'#type' => 'submit',
