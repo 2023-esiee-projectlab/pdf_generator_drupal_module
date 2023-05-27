@@ -24,18 +24,20 @@ pdf_generator_drupal_module.settings:
 # Liaison avec :
 # - le sous-menu de permissions du module PDF Generator, dans le block de configuration du module PDF Generator, dans le menu de configuration de Drupal
 pdf_generator_drupal_module.permissions:
-    path: '/admin/people/permissions#module-pdfgenerator'
+    path: '/admin/people/permissions'
     defaults:
         _title: 'PdfGenerator - Permissions'
+        _controller: '\Drupal\pdf_generator_drupal_module\Controller\PermissionController::permissionsPage'
     requirements:
         _permission: 'administer pdf_generator_drupal_module settings'
 
 # Liaison avec :
 # - le sous-menu "A propos" du module PDF Generator, dans le block de configuration du module PDF Generator, dans le menu de configuration de Drupal
 pdf_generator_drupal_module.about:
-    path: '/admin/help/pdfgenerator'
+    path: '/admin/help/pdf_generator_drupal_module'
     defaults:
         _title: 'PdfGenerator - A propos'
+        _controller: '\Drupal\pdf_generator_drupal_module\Controller\HelpController::helpPage'
     requirements:
         _permission: 'administer pdf_generator_drupal_module settings'
 
