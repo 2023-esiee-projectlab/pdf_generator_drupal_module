@@ -51,8 +51,10 @@ class PdfGeneratorController extends ControllerBase {
 			return AccessResult::forbidden();
 		}
 
+		$entity = $this->entityTypeManager->getStorage($entity_type)->load($entity_id);
+
 		// Unable to find the entity requested.
-		if (!$this->entityTypeManager->getStorage($entity_type)->load($entity_id)) {
+		if (!$entity) {
 			return AccessResult::forbidden();
 		}
 
@@ -99,7 +101,15 @@ class PdfGeneratorController extends ControllerBase {
 		if (empty($entity)) {
 			throw new ErrorException("No entity found");
 		}
-		return new Response($this->pdfBuilder->printHtml($entity));
+		// Création du PDF
+		$pdfGenerator = new PdfGenerator();
+		// Configuration des pages du PDF
+		$pdfGenerator->setContenu(
+			[
+				$entity
+			]
+		);
+		return new Response($pdfGenerator->generatePDF());
 	}
 
 	public function generatePdfByUrl($url) {
@@ -118,7 +128,7 @@ class PdfGeneratorController extends ControllerBase {
 		// Récupérer le contenu du noeud à partir de son id.
 		$node = \Drupal\node\Entity\Node::load($node_id);
 		// Vérifiez que le contenu du noeud est bien récupéré.
-		\Drupal::logger('PDF Generator')->notice('yourMethod called with node: ' . $node);
+		\Drupal::logger('PDF Generator')->notice('yourMethod called with node: ' . $node->getType());
 
 		/**
 		 * Génerer le PDF à partir du contenu du noeud
