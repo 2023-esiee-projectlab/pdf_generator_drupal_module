@@ -103,6 +103,9 @@ class PdfGeneratorController extends ControllerBase {
 		}
 		// Création du PDF
 		$pdfGenerator = new PdfGenerator();
+		// Test récup config
+		$config = $this->config('pdf_generator_drupal_module.settings');
+		// var_dump($config);
 		// Configuration des pages du PDF
 		$pdfGenerator->setContenu(
 			[
