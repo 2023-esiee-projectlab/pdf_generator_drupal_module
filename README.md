@@ -2,7 +2,7 @@
 
 ## Decscription
 
-Ce projet est un générateur de PDF créer au sein d'un projet pour l'ENS avec l'ESIEE.
+Ce projet est un générateur de PDF créer au sein d'un projet pour l'ENS avec l'ESIEE-IT.
 
 Il permet d'obtenir un module de génération de PDF pour les articles pour un site fonctionnant avec Drupal 8 (compatibilité 9 et 10, non prévu).
 
