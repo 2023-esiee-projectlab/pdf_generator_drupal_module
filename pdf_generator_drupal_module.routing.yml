@@ -46,7 +46,7 @@ pdf_generator_drupal_module.about:
 pdf_generator_drupal_module.generate.pdf:
     path: '/pdf_generator_drupal_module/generate/pdf/{node_id}'
     defaults:
-        _controller: '\Drupal\pdf_generator_drupal_module\Controllers\PdfGeneratorController::generatePdf'
+        _controller: '\Drupal\pdf_generator_drupal_module\Controller\PdfGeneratorController::generatePdf'
     requirements:
         _permission: 'access content'
         _is_controller_call: 'TRUE'
@@ -57,6 +57,6 @@ pdf_generator_drupal_module.generate.pdf.file:
     # chemin pour la génération de PDF avec la langue du site et l'id du noeud
     path: '/{langcode}/node/{node_id}/generate/pdf'
     defaults:
-        _controller: '\Drupal\pdf_generator_drupal_module\Controllers\PdfGeneratorController::generatePdfByUrl'
+        _controller: '\Drupal\pdf_generator_drupal_module\Controller\PdfGeneratorController::generatePdfByUrl'
     requirements:
         _permission: 'access content'

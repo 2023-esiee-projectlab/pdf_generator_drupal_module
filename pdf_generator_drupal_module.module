@@ -7,6 +7,11 @@
 
 // Permet d'implémenter l'interface de routage de Drupal.
 use Drupal\Core\Routing\RouteMatchInterface;
+// Permet de s'amuser avec les Entity
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+// Ajout d'url (lien cliquable)
+use Drupal\Core\Url as CoreUrl;
 
 /**
  * Ce hook permet de gérer la route de l'aide du module.
@@ -48,4 +53,42 @@ function pdf_generator_drupal_module_theme()
   $theme = [];
 
   return $theme;
+}
+
+
+function pdf_generator_drupal_module_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+	$route_match = \Drupal::routeMatch();
+	if (($route_match->getRouteName() == 'entity.node.preview') || ($route_match->getRouteName() == 'entity.node.canonical')) {
+		// $url = CoreUrl::fromUri('http://drupal/node', ['node' => $entity]);
+		$url = CoreUrl::fromRoute($route_match->getRouteName(), ['node' => $entity->id()]);
+		// $url = CoreUrl::fromRoute('pdf_generator_drupal_module.export', ['entity_type' => $entity->getEntityType()->id(), 'entity_id' => $entity->id()]);
+		$url_options = [
+			'attributes' => [
+				'class' => [
+					// Add or remove CSS classes here
+					'button',
+					'button--small',
+					'pdf_generator_drupal_module',
+				],
+			],
+		];
+		$url->setOptions($url_options);
+		$build['pdfgenerator'] = [
+			'#type' => 'link',
+			'#title' => 'Export PDF',
+			'#url' => $url,
+		];
+		// var_dump($url);
+	}
+}
+
+
+function pdf_generator_drupal_module_node_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
+	$route_match = \Drupal::routeMatch();
+	if (($route_match->getRouteName() == 'entity.node.preview') || ($route_match->getRouteName() == 'entity.node.canonical')) {
+		if ($build['#view_mode'] == 'full' && isset($build['pdfgenerator'])) {
+			// Change its weight.
+			$build['pdfgenerator']['#weight'] = 40;
+		}
+	}
 }
