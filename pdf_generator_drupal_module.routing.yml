@@ -60,6 +60,7 @@ pdf_generator_drupal_module.generate.pdf.file:
         _controller: '\Drupal\pdf_generator_drupal_module\Controller\PdfGeneratorController::generatePdfByUrl'
     requirements:
         _permission: 'access content'
+        _is_controller_call: 'TRUE'
 
 # Liaison avec :
 # - le controller d'exporttation de PDF via url
@@ -70,3 +71,4 @@ pdf_generator_drupal_module.export_pdf:
     _title: 'Export PDF'
   requirements:
     _permission: 'access content'
+    _is_controller_call: 'TRUE'
