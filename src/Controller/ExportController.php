@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use TCPDF;
 
-class ExportController extends ControllerBase {
+class PdfGeneratorExportController extends ControllerBase {
 
 	public function description(): array {
 		return [
