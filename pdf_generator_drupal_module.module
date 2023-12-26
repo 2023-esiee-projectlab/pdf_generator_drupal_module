@@ -96,7 +96,7 @@ function pdf_generator_drupal_module_node_view_alter(array &$build, Drupal\Core\
 /**
  * Implements hook_ENTITY_TYPE_view_alter() for nodes.
  */
-function pdf_generator_drupal_module_node_button(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display): void
+function pdf_generator_drupal_module_button_node_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display): void
 {
 
   // Vérifiez si le type de contenu est "article".
