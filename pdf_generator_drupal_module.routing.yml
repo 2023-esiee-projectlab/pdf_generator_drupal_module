@@ -66,7 +66,7 @@ pdf_generator_drupal_module.generate.pdf.file:
 pdf_generator_drupal_module.generate.export_pdf:
   path: '/node/{node}/export-pdf'
   defaults:
-    _controller: '\Drupal\pdfButtonModule\Controller\ExportController::exportPdf'
+    _controller: '\Drupal\pdf_generator_drupal_module\Controller\ExportController::exportPdf'
     _title: 'Export PDF'
   requirements:
     _permission: 'access content'
