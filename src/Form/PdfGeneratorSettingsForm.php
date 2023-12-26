@@ -16,7 +16,7 @@ namespace Drupal\pdf_generator_drupal_module\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 // Permet d'implémenter la classe PdfGeneratorController du module PDF Generator.
-use Drupal\pdf_generator_drupal_module\Controllers\PdfGeneratorController;
+use Drupal\pdf_generator_drupal_module\Controller\PdfGeneratorController;
 
 class PdfGeneratorSettingsForm extends ConfigFormBase{
 
