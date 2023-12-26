@@ -101,7 +101,7 @@ function pdf_generator_drupal_module_node_button(array &$build, EntityInterface 
 
   // Vérifiez si le type de contenu est "article".
   if ($entity->getType() === 'article' || $entity->getType() === 'article_image' ) {
-    $url = Url::fromRoute('pdf_generator_drupal_module.generate.export_pdf', ['node' => $entity->id()]);
+    $url = Url::fromRoute('pdf_generator_drupal_module.export_pdf', ['node' => $entity->id()]);
     $url_options = [
       'attributes' => [
         'class' => [

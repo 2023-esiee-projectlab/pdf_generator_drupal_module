@@ -63,7 +63,7 @@ pdf_generator_drupal_module.generate.pdf.file:
 
 # Liaison avec :
 # - le controller d'exporttation de PDF via url
-pdf_generator_drupal_module.generate.export_pdf:
+pdf_generator_drupal_module.export_pdf:
   path: '/node/{node}/export-pdf'
   defaults:
     _controller: '\Drupal\pdf_generator_drupal_module\Controller\PdfGeneratorController::exportPdfByChen'
