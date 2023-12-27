@@ -18,44 +18,48 @@ use Drupal\Core\Url as CoreUrl;
  *
  * Implements pdf_generator_drupal_module_help().
  */
-function pdf_generator_drupal_module_help($route_name, RouteMatchInterface $route_match)
-		{
-				switch ($route_name) {
-						case 'help.page.pdf_generator_drupal_module':
-						$output = '';
-						$output .= '<h3>' . t('À propos') . '</h3>';
-						$output .= '<p>' . t('Ce module permet de générer un fichier PDF.') . '</p>';
+function pdf_generator_drupal_module_help($route_name, RouteMatchInterface $route_match) {
+	switch ($route_name) {
+		case 'help.page.pdf_generator_drupal_module':
+			$output = '';
+			$output .= '<h3>' . t('À propos') . '</h3>';
+			$output .= '<p>' . t('Ce module permet de générer un fichier PDF.') . '</p>';
 
-						// Utilisation du module.
-						$output .= '<h3>' . t('Uses') . '</h3>';
-						$output .= '<div>';
-						$output .= '<dt>' . t('Creating Paragraphs types') . '</dt>';
-						$output .= '<dd>' . t('<em>Paragraphs types</em> can be created by ...') . '<dd>';
-						$output .= '</div>';
+			// Utilisation du module.
+			$output .= '<h3>' . t('Uses') . '</h3>';
+			$output .= '<div>';
+			$output .= '<dt>' . t('Creating Paragraphs types') . '</dt>';
+			$output .= '<dd>' . t('<em>Paragraphs types</em> can be created by ...') . '<dd>';
+			$output .= '</div>';
 
-						// Dépendances du module.
-						$output .= '<h4>' . t('Dépendances du module') . '</h4>';
-						$output .= '<p>' . t('Ce module à pour packages de dépendances :') . '</p>';
-						$output .= '<ul>';
-						$output .= '<li>' . t('<a href=":link">esiee/pdf_generator_composer_package</a>', [':link' => 'https://packagist.org/packages/esiee/pdf_generator_composer_package',]) . '</li>';
-						$output .= '</ul>';
+			// Dépendances du module.
+			$output .= '<h4>' . t('Dépendances du module') . '</h4>';
+			$output .= '<p>' . t('Ce module à pour packages de dépendances :') . '</p>';
+			$output .= '<ul>';
+			$output .= '<li>' . t('<a href=":link">esiee/pdf_generator_composer_package</a>', [':link' => 'https://packagist.org/packages/esiee/pdf_generator_composer_package',]) . '</li>';
+			$output .= '</ul>';
 
-						return $output;
-				break;
-		}
+			return $output;
+		break;
+	}
 }
 
 /**
+ * Ce hook permet de gérer la route du thème du module.
+ *
  * Implements pdf_generator_drupal_module_theme().
  */
-function pdf_generator_drupal_module_theme()
-{
+function pdf_generator_drupal_module_theme() {
 	$theme = [];
 
 	return $theme;
 }
 
-
+/**
+ * Ce hook permet de gérer la route du thème du module.
+ *
+ * Implements pdf_generator_drupal_module_node_view().
+ */
 function pdf_generator_drupal_module_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
 	$route_match = \Drupal::routeMatch();
 	if (($route_match->getRouteName() == 'entity.node.preview') || ($route_match->getRouteName() == 'entity.node.canonical')) {
@@ -82,7 +86,9 @@ function pdf_generator_drupal_module_node_view(array &$build, EntityInterface $e
 	}
 }
 
-
+/**
+ * Implements pdf_generator_drupal_module_node_view_alter()
+ */
 function pdf_generator_drupal_module_node_view_alter(array &$build, Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display) {
 	$route_match = \Drupal::routeMatch();
 	if (($route_match->getRouteName() == 'entity.node.preview') || ($route_match->getRouteName() == 'entity.node.canonical')) {
@@ -94,11 +100,9 @@ function pdf_generator_drupal_module_node_view_alter(array &$build, Drupal\Core\
 }
 
 /**
- * Implements hook_ENTITY_TYPE_view_alter() for nodes.
+ * Implements pdf_generator_drupal_module_button_node_view_alter()
  */
-function pdf_generator_drupal_module_button_node_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display): void
-{
-
+function pdf_generator_drupal_module_button_node_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display): void {
 	// Vérifiez si le type de contenu est "article".
 	if ($entity->getType() === 'article' || $entity->getType() === 'article_image' ) {
 		$url = Url::fromRoute('pdf_generator_drupal_module.export_pdf', ['node' => $entity->id()]);
