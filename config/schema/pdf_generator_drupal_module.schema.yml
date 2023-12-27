@@ -3,5 +3,5 @@ pdf_generator_drupal_module.settings:
 	type: config_object
 	mapping:
 		show_button_on_articles:
-			type: boolean
-			label: '[B] Activer ou désactiver le bouton de la génération de PDF pour les articles publiés'
+		type: boolean
+		label: '[B] Activer ou désactiver le bouton de la génération de PDF pour les articles publiés'
