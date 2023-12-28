@@ -25,8 +25,18 @@ class HelpController extends ControllerBase {
 	 *   The render array for the help page.
 	 */
 	public function helpPage() {
+		/*
 		// Replace 'pdf_generator' with your module's machine name.
 		return \Drupal::moduleHandler()->invoke('pdf_generator_drupal_module', 'help');
+		*/
+
+		// Vérifiez que la méthode est appelée.
+		\Drupal::logger('PDF Generator')->notice('help called');
+
+		// Affichage de la page d'aide du module.
+		return [
+			'#markup' => $this->t('Help page'),
+		];
 	}
 
 }
