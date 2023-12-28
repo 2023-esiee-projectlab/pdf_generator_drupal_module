@@ -19,35 +19,12 @@ use Drupal\Core\Url as CoreUrl;
  * Implements pdf_generator_drupal_module_help().
  */
 function pdf_generator_drupal_module_help($route_name, RouteMatchInterface $route_match) {
+	/*
 	// Redirection vers la route : pdf_generator_drupal_module.about
 	if ($route_name == 'help.page.pdf_generator_drupal_module') {
 		// Redirection vers la route : pdf_generator_drupal_module.about
 		$route = '/pdf_generator_drupal_module/about';
 		return \Drupal::service('http_kernel')->handle(\Symfony\Component\HttpFoundation\Request::create($route, 'GET', []), \Symfony\Component\HttpKernel\HttpKernelInterface::SUB_REQUEST);
-	}
-	/*
-	switch ($route_name) {
-		case 'help.page.pdf_generator_drupal_module':
-			$output = '';
-			$output .= '<h3>' . t('À propos') . '</h3>';
-			$output .= '<p>' . t('Ce module permet de générer un fichier PDF.') . '</p>';
-
-			// Utilisation du module.
-			$output .= '<h3>' . t('Uses') . '</h3>';
-			$output .= '<div>';
-			$output .= '<dt>' . t('Creating Paragraphs types') . '</dt>';
-			$output .= '<dd>' . t('<em>Paragraphs types</em> can be created by ...') . '<dd>';
-			$output .= '</div>';
-
-			// Dépendances du module.
-			$output .= '<h4>' . t('Dépendances du module') . '</h4>';
-			$output .= '<p>' . t('Ce module à pour packages de dépendances :') . '</p>';
-			$output .= '<ul>';
-			$output .= '<li>' . t('<a href=":link">esiee/pdf_generator_composer_package</a>', [':link' => 'https://packagist.org/packages/esiee/pdf_generator_composer_package',]) . '</li>';
-			$output .= '</ul>';
-
-			return $output;
-		break;
 	}
 	*/
 }

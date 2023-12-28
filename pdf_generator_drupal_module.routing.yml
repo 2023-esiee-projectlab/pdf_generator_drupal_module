@@ -54,7 +54,7 @@ pdf_generator_drupal_module.admin_config.settings:
 # Liaison avec :
 # - le sous-menu de permissions du module PDF Generator, dans le block de configuration du module PDF Generator, dans le menu de configuration de Drupal
 pdf_generator_drupal_module.admin_config.permissions:
-    path: '/admin/people/permissions#module-pdfgenerator'
+    path: '/admin/people/permissions#module-pdf_generator_drupal_module'
     #path: '/admin/people/permissions'
     defaults:
         _title: 'PdfGenerator - Permissions'

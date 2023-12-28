@@ -14,19 +14,19 @@ pdf_generator_drupal_module.admin_config:
     parent: system.admin_config
     route_name: pdf_generator_drupal_module.admin_config
 
-pdf_generator_drupal_module.settings:
+pdf_generator_drupal_module.admin_config.settings:
     title: 'Configurations'
     parent: pdf_generator_drupal_module.admin_config
     description: "Configuration des options de PDF Generator."
     route_name: pdf_generator_drupal_module.admin_config.settings
 
-pdf_generator_drupal_module.permissions:
+pdf_generator_drupal_module.admin_config.permissions:
     title: 'Permissions'
     parent: pdf_generator_drupal_module.admin_config
     description: "Configuration des permissions de PDF Generator."
     route_name: pdf_generator_drupal_module.admin_config.permissions
 
-pdf_generator_drupal_module.about:
+pdf_generator_drupal_module.admin_config.about:
     title: 'A propos'
     parent: pdf_generator_drupal_module.admin_config
     description: "A propos de PDF Generator."
