@@ -33,9 +33,28 @@ class HelpController extends ControllerBase {
 		// Vérifiez que la méthode est appelée.
 		\Drupal::logger('PDF Generator')->notice('help called');
 
+		$content = '';
+		$content .= '<h3>' . 'À propos' . '</h3>';
+		$content .= '<p>' . 'Ce module permet de générer un fichier PDF.' . '</p>';
+
+		// Utilisation du module.
+		$content .= '<h3>' . 'Uses' . '</h3>';
+		$content .= '<div>';
+		$content .= '<dt>' . 'Creating Paragraphs types' . '</dt>';
+		$content .= '<dd>' . '<em>Paragraphs types</em> can be created by ...' . '<dd>';
+		$content .= '</div>';
+
+		// Dépendances du module.
+		$content .= '<h4>' . 'Dépendances du module' . '</h4>';
+		$content .= '<p>' . 'Ce module à pour packages de dépendances :' . '</p>';
+		$content .= '<ul>';
+		$link = 'https://packagist.org/packages/esiee/pdf_generator_composer_package';
+		$content .= '<li>' . '<a href="'.$link.'">esiee/pdf_generator_composer_package</a>' . '</li>';
+		$content .= '</ul>';
+
 		// Affichage de la page d'aide du module.
 		return [
-			'#markup' => $this->t('Help page'),
+			'#markup' => $this->t($content),
 		];
 	}
 

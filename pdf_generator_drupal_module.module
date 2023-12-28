@@ -13,11 +13,14 @@ use Drupal\Core\Entity\EntityInterface;
 // Ajout d'url (lien cliquable)
 use Drupal\Core\Url as CoreUrl;
 
-/**
+/*
+Remplacez le code helpPage() dans HelpController.php
+
+**
  * Ce hook permet de gérer la route de l'aide du module.
  *
  * Implements pdf_generator_drupal_module_help().
- */
+ *
 function pdf_generator_drupal_module_help($route_name, RouteMatchInterface $route_match) {
 	switch ($route_name) {
 		case 'help.page.pdf_generator_drupal_module':
@@ -43,6 +46,7 @@ function pdf_generator_drupal_module_help($route_name, RouteMatchInterface $rout
 		break;
 	}
 }
+*/
 
 /**
  * Ce hook permet de gérer la route du thème du module.
