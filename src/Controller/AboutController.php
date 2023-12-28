@@ -14,24 +14,24 @@ namespace Drupal\pdf_generator_drupal_module\Controller;
 use Drupal\Core\Controller\ControllerBase;
 
 /**
- * Controller for the help page.
+ * Controller for the about page.
  */
-class HelpController extends ControllerBase {
+class AboutController extends ControllerBase {
 
 	/**
-	 * Displays the help page.
+	 * Displays the about page.
 	 *
 	 * @return array
-	 *   The render array for the help page.
+	 *   The render array for the about page.
 	 */
-	public function helpPage() {
+	public function aboutPage() {
 		/*
 		// Replace 'pdf_generator' with your module's machine name.
-		return \Drupal::moduleHandler()->invoke('pdf_generator_drupal_module', 'help');
+		return \Drupal::moduleHandler()->invoke('pdf_generator_drupal_module', 'about');
 		*/
 
 		// Vérifiez que la méthode est appelée.
-		\Drupal::logger('PDF Generator')->notice('help called');
+		\Drupal::logger('PDF Generator')->notice('about called');
 
 		$content = '';
 		$content .= '<h3>' . 'À propos' . '</h3>';
