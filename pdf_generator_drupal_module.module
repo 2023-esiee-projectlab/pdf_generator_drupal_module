@@ -70,7 +70,7 @@ function pdf_generator_drupal_module_node_view(array &$build, EntityInterface $e
 	*/
 
 	if ($entity->getType() === 'article' || $entity->getType() === 'article_image' ) {
-		$url = Url::fromRoute('pdf_generator_drupal_module.export_pdf', ['node' => $entity->id()]);
+		$url = CoreUrl::fromRoute('pdf_generator_drupal_module.export_pdf', ['node' => $entity->id()]);
 
 		$url_options = [
 			'attributes' => [
