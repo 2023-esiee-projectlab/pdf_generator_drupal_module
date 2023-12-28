@@ -61,11 +61,17 @@ function pdf_generator_drupal_module_theme() {
  * Implements pdf_generator_drupal_module_node_view().
  */
 function pdf_generator_drupal_module_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+	/*
 	$route_match = \Drupal::routeMatch();
 	if (($route_match->getRouteName() == 'entity.node.preview') || ($route_match->getRouteName() == 'entity.node.canonical')) {
 		// $url = CoreUrl::fromUri('http://drupal/node', ['node' => $entity]);
 		$url = CoreUrl::fromRoute($route_match->getRouteName(), ['node' => $entity->id()]);
 		// $url = CoreUrl::fromRoute('pdf_generator_drupal_module.export', ['entity_type' => $entity->getEntityType()->id(), 'entity_id' => $entity->id()]);
+	*/
+
+	if ($entity->getType() === 'article' || $entity->getType() === 'article_image' ) {
+		$url = Url::fromRoute('pdf_generator_drupal_module.export_pdf', ['node' => $entity->id()]);
+
 		$url_options = [
 			'attributes' => [
 				'class' => [
@@ -102,6 +108,7 @@ function pdf_generator_drupal_module_node_view_alter(array &$build, Drupal\Core\
 /**
  * Implements pdf_generator_drupal_module_button_node_view_alter()
  */
+/*
 function pdf_generator_drupal_module_button_node_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display): void {
 	// Vérifiez si le type de contenu est "article".
 	if ($entity->getType() === 'article' || $entity->getType() === 'article_image' ) {
@@ -125,3 +132,4 @@ function pdf_generator_drupal_module_button_node_view_alter(array &$build, Entit
 		];
 	}
 }
+*/
