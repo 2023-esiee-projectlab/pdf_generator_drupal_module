@@ -1,7 +1,7 @@
 package: ESIEE-IT & ENS
 interface translation project: PdfGenerator-0.1.0
 project: 'PdfGenerator'
-name: PDF Generator
+name: The PDF Generator
 type: module
 description: Ceci est un module de génération de PDF créer par l'ESIEE-IT pour l'ENS.
 
